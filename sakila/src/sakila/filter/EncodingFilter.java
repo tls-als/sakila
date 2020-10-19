@@ -9,7 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-@WebFilter("/*")	// 모든 요청
+@WebFilter("/*")	// 모든 요청을 받음. 인코딩을 처리하는 필터 기능
 public class EncodingFilter implements Filter {
 
     public EncodingFilter() {
@@ -23,7 +23,7 @@ public class EncodingFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		System.out.println("EncodingFilter 실행 : request utf-8 인코딩");	// 디버깅
 		request.setCharacterEncoding("utf-8");	// 어떤 걸 요청해도 해당 코드 먼저 실행.
-		chain.doFilter(request, response);
+		chain.doFilter(request, response);	// chain을 기준으로 위는 선실행, 아래는 후 실행
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {

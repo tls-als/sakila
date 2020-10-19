@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("/auth/*")	// auth로 시작되는 모든 요청을 가져와 세션을 확인하는 필터처리.(로그인 안 되있는 건 막음) -> 필터는 AOP 기법
+@WebFilter("/auth/*")	// auth로 시작되는 모든 요청을 받음. 로그인 세션을 확인하는 필터(로그아웃 상태는 리턴) -> 필터는 AOP 기법
 public class LoginFilter implements Filter {
 
     public LoginFilter() {
@@ -25,8 +25,8 @@ public class LoginFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {	// 서블릿은 웹 요청만 처리하기에 여러 프로토콜로 들어오는 요청을 처리위해 자식타입으로 형변환하는 것(다형성)
 		System.out.println("LoginFilter 실행 : session 검사");	// 디버깅
-		HttpSession session = ((HttpServletRequest)request).getSession();	// 자식타입인 HttpServletRequest로 형변환
-		if(session.getAttribute("loginStaff") == null) {
+		HttpSession session = ((HttpServletRequest)request).getSession();	// 자식타입인 HttpServletRequest로 형변환. ServletRequest > HttpServletRequest의 부모 타입.
+		if(session.getAttribute("loginStaff") == null) {	// 로그아웃 상태라면
 			((HttpServletResponse)response).sendRedirect(request.getServletContext().getContextPath()+"/LoginServlet");	// request.getServletContext().getContextPath()이 원칙.
 			return;	// 로그인 안 되어 있으면 종료
 		}
