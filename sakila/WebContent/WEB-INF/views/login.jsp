@@ -9,6 +9,10 @@
 </head>
 <body>
 	<h1>로그인 폼</h1>
+	<div>
+	<!-- 오늘 접속자 수 : ${map["stats"].cnt} / 전체 접속자 수 : ${map["totalCount"]}  -->
+		오늘 접속자 수 : ${stats.cnt} / 전체 접속자 수 : ${totalCount}
+	</div>
 	<form>
 		<div>
 			<input type="text" placeholder="ID">
