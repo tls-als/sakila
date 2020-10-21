@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import sakila.service.StaffService;
 import sakila.service.StatsService;
+import sakila.vo.Staff;
 import sakila.vo.Stats;
 
 @WebServlet("/LoginServlet")	// 로그인 요청을 처리하는 서블릿
 public class LoginServlet extends HttpServlet {
 	// 접속자 출력을 위한 StatsService 변수생성.
 	private StatsService statsService;
+	private StaffService staffService;
 	
 	// 로그인 폼으로 이동
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,6 +38,15 @@ public class LoginServlet extends HttpServlet {
 	}
 	// 로그인 액션으로 이동
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		staffService = new StaffService();
+		Staff staff = new Staff();	// request로 채우기...
+		Staff returnStaff = staffService.getSaffByKey(staff);
+		if(returnStaff != null) {
+			//session 담고
+			
+			//IndexServlet으로 포워딩
+			return;
+		}
+		response.sendRedirect(request.getContextPath()+"/LoginServlet");
 	}
 }
