@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +14,11 @@
 <div class="container">
 	<h1>인덱스 화면</h1>
 	<div>
-		ID: ${loginStaff.getStaffId()}
+		<span>${loginStaff.email}</span>관리자님
 	</div>
 	<div>
-		유저이름 : ${loginStaff.getUserName()}
+		<!-- pageContext.request.contextPath => request.getContextPath -->
+		<a href="${pageContext.request.contextPath}/auth/logoutServlet">로그아웃</a>
 	</div>
 </div>
 </body>

@@ -33,14 +33,14 @@
 	<!-- 오늘 접속자 수 : {map["stats"].cnt} / 전체 접속자 수 : {map["totalCount"]}  -->
 		<h5>오늘 접속자 수 : ${stats.cnt} / 전체 접속자 수 : ${totalCount}</h5>
 	</div>
-	<form method="post" action="<%=request.getContextPath()%>/LoginServlet" id="loginForm"> 
+	<form method="post" action="${pageContext.request.contextPath}/LoginServlet" id="loginForm"> 
 		<div align="center">
 			<img src="./images/login.png" class="rounded-circle" width="250" height="250">
 		</div><br>
 		<div align="center">
 			<div class="form-group col-lg-4">
 				 <!-- name은 파라미터로 넘길 때, id는 웹페이지 내에서 참조 -->
-				<input type="text" class="form-control input-lg" width="300px" name="id" id="id" placeholder="ID">
+				<input type="text" class="form-control input-lg" width="300px" value="Mike.Hillyer@sakilastaff.com" name="id" id="id" placeholder="ID">
 			</div>
 			<div class="form-group col-lg-4">
 				<input type="password" class="form-control input-lg" name="pw" id="pw" placeholder="PW">

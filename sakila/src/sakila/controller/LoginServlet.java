@@ -17,7 +17,7 @@ import sakila.vo.Staff;
 import sakila.vo.Stats;
 
 @SuppressWarnings("serial")
-@WebServlet("/LoginServlet")	// 로그인 요청을 처리하는 서블릿
+@WebServlet({"/","/LoginServlet"})	// 로그인 요청을 처리하는 서블릿
 public class LoginServlet extends HttpServlet{
 
 	// 접속자 출력을 위한 StatsService 변수생성.
@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet{
 		staffService = new StaffService();
 		Staff staff = new Staff();	// Staff 타입을 사용하기 위한 객체 생성
 		// request로 넘어온 값 받기
-		staff.setStaffId(Integer.parseInt(request.getParameter("id")));
+		staff.setEmail(request.getParameter("id"));
 		System.out.println("서블릿에 넘어온 파라메터 id : "+request.getParameter("id")); // 디버깅
 		staff.setPassword(request.getParameter("pw"));
 		System.out.println("서블릿에 넘어온 파라메터 pw : "+request.getParameter("pw")); // 디버깅
@@ -57,11 +57,12 @@ public class LoginServlet extends HttpServlet{
 		HttpSession session = request.getSession();	
 		System.out.println("받은 세션: "+ session);
 		if(returnStaff != null) {
-			session.setAttribute("loginStaff", returnStaff); // 스태프 정보(staff_id, username) 세션에 값 담기
+			session.setAttribute("loginStaff", returnStaff); // 스태프 정보(staff_id, username) 세션에 값 담기. 어트리뷰트에는 map형태로 들어감
 			// 스태프 결과 값이 있다면 IndexServlet으로 이동
 			response.sendRedirect(request.getContextPath()+"/auth/IndexServlet");
 			return;
 		}
+		System.out.println("로그인 실패!");
 		// 스태프 정보가 없으면 LoginServlet 으로 리다이렉트
 		response.sendRedirect(request.getContextPath()+"/LoginServlet");	
 	}

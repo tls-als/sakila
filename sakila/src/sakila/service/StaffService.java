@@ -17,6 +17,7 @@ public class StaffService {
 		try {
 			DBUtill utill = new DBUtill();	// DBUtill(DB 연결 정보를 가진)객체 생성
 			conn = utill.getConn();	// conn에 연결 정보 담기
+			
 			System.out.println(conn + "<= 커넥션 연결");	// 디버깅
 			returnStaff = staffDao.selectStaffByKey(conn, staff);	// id,pw를 이용한 스태프 조회 결과 담기
 			System.out.println("dao에서 가져온 스태프정보: "+returnStaff); // 디버깅
