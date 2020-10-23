@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSessionListener;
 import sakila.service.StatsService;
 
 @WebListener
-public class StatsListener implements HttpSessionListener {	// 처음 시작하면 구동
+public class StatsListener implements HttpSessionListener {	// 처음 시작하면 구동(세션이 생길때)
 
     public StatsListener() {}
     private StatsService statsService;

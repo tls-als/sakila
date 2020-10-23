@@ -27,6 +27,7 @@ public class LoginFilter implements Filter {
 		System.out.println("LoginFilter 실행 : session 검사");	// 디버깅
 		HttpSession session = ((HttpServletRequest)request).getSession();	// 자식타입인 HttpServletRequest로 형변환. ServletRequest > HttpServletRequest의 부모 타입.
 		if(session.getAttribute("loginStaff") == null) {	// 로그아웃 상태라면
+			System.out.println("==============세션 값 없음");
 			((HttpServletResponse)response).sendRedirect(request.getServletContext().getContextPath()+"/LoginServlet");	// request.getServletContext().getContextPath()이 원칙.
 			return;	// 로그인 안 되어 있으면 종료
 		}

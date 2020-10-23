@@ -18,7 +18,7 @@
 	</div>
 	<div>
 		<!-- pageContext.request.contextPath => request.getContextPath -->
-		<a href="${pageContext.request.contextPath}/auth/logoutServlet">로그아웃</a>
+		<a href="${pageContext.request.contextPath}/auth/LogoutServlet">로그아웃</a>
 	</div>
 </div>
 </body>

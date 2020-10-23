@@ -32,6 +32,7 @@
 	<div align="right">
 	<!-- 오늘 접속자 수 : {map["stats"].cnt} / 전체 접속자 수 : {map["totalCount"]}  -->
 		<h5>오늘 접속자 수 : ${stats.cnt} / 전체 접속자 수 : ${totalCount}</h5>
+		<% System.out.println("======로그인페이지로 다시 넘어왔음============"); %>
 	</div>
 	<form method="post" action="${pageContext.request.contextPath}/LoginServlet" id="loginForm"> 
 		<div align="center">
