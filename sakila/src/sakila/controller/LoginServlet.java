@@ -16,7 +16,7 @@ import sakila.service.StatsService;
 import sakila.vo.Staff;
 import sakila.vo.Stats;
 
-@WebServlet({"/","/LoginServlet"})	// 로그인 요청을 처리하는 서블릿, "/" 어떤 요청도 로그인으로
+@WebServlet("/LoginServlet")	// 로그인 요청을 처리하는 서블릿, "/" 어떤 요청도 로그인으로
 public class LoginServlet extends HttpServlet{
 
 	// 접속자 출력을 위한 StatsService 변수생성.
